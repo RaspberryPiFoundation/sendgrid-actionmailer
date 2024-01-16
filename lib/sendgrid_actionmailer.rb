@@ -140,9 +140,7 @@ module SendGridActionMailer
 
         disposition = get_disposition(part)
         a.disposition = disposition unless disposition.nil?
-
-        has_content_id = part.header && part.has_content_id?
-        a.content_id = part.header['content_id'].field.content_id if has_content_id
+        a.content_id = part.cid
       end
     end
 
